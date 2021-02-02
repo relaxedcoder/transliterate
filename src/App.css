@@ -5,7 +5,8 @@
 }
 
 textarea {
-    width: 1000px;
+    width: 90vw;
+    max-width: 1000px;
     height: 1000px;
     padding: 10px;
     font-size: large;
@@ -15,4 +16,15 @@ textarea {
 li {
     font-size: large;
     font-weight: 600;
+}
+
+#save {
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: medium;
+    background-color: greenyellow;
+}
+#save:active {
+    background-color: lightgreen;
 }

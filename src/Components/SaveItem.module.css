@@ -1,0 +1,16 @@
+#container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+#restore {
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    background-color: #82DCFF;
+    margin-left: 50px;
+}
+#restore:active {
+    background-color: #33C6FF;
+}
