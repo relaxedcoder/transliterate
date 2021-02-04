@@ -33,13 +33,11 @@ const App = () => {
         const now = new Date()
         const date = [now.getDate(), now.toLocaleString('default', { month: 'short' }), now.getFullYear()].join(' ')
         const time = now.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-        const newSaves = saves
-        newSaves.push({
+        saves.push({
             date: date,
             time: time,
             text: text
         })
-        setSaves(newSaves)
         setPseudo(pseudo + 1)
     }
 
@@ -62,10 +60,16 @@ const App = () => {
                     key={index}
                     date={save.date}
                     time={save.time}
-                    handleRestoreParent={() => {
+                    handleRestore={() => {
                         if (window.confirm('Restoring will delete current text if not saved. Are you sure?')) {
                             setText(save.text)
                             setSaveDateTime(save.date + '_' + save.time)
+                        }
+                    }}
+                    handleDelete={() => {
+                        if (window.confirm('Deletion is irreversible. Are you sure?')) {
+                            saves.splice(index, 1)
+                            setPseudo(pseudo + 1)
                         }
                     }}
                 />
