@@ -10,6 +10,7 @@ const App = () => {
     const [text, setText] = useState('');
     const [saves, setSaves] = useState([])
     const [pseudo, setPseudo] = useState(0)
+    const [saveDateTime, setSaveDateTime] = useState('New document')
 
     useEffect(() => {
         const pastSaves = JSON.parse(localStorage.getItem('transliterate-saves'))
@@ -42,6 +43,15 @@ const App = () => {
         setPseudo(pseudo + 1)
     }
 
+    const handleDownload = () => {
+        const element = document.createElement('a')
+        const file = new Blob([text], { type: 'text/plain' })
+        element.href = URL.createObjectURL(file)
+        element.download = 'Save_' + saveDateTime
+        document.body.appendChild(element)
+        element.click()
+    }
+
     return (
         <div id='container'>
             <h2>English to Hindi Transliterate</h2>
@@ -55,6 +65,7 @@ const App = () => {
                     handleRestoreParent={() => {
                         if (window.confirm('Restoring will delete current text if not saved. Are you sure?')) {
                             setText(save.text)
+                            setSaveDateTime(save.date + '_' + save.time)
                         }
                     }}
                 />
@@ -65,6 +76,12 @@ const App = () => {
                 lang='hi'
                 Component='textarea'
             />
+            <button
+                id='download'
+                onClick={handleDownload}
+            >
+                Download .txt file
+            </button>
             <br />
         </div>
     )

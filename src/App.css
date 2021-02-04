@@ -28,3 +28,11 @@ li {
 #save:active {
     background-color: lightgreen;
 }
+
+#download {
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    font-weight: 600;
+    background-color: #adff69;
+}
